@@ -1,0 +1,33 @@
+/* ==========================================================================
+   ColabUp — Legal / static content pages (privacy, terms, faq, 404)
+   ========================================================================== */
+
+.legal-hero {
+  background: var(--gradient-hero); color: var(--color-white);
+  padding: var(--space-7) 0 var(--space-5); text-align: center; position: relative; overflow: hidden;
+}
+.legal-hero::before { content:""; position:absolute; inset:-20%; background: radial-gradient(circle at 80% 20%, rgba(111,207,151,0.18), transparent 45%); }
+.legal-hero .container { position: relative; z-index: 1; }
+.legal-hero h1 { color: var(--color-white); font-size: clamp(28px, 4vw, 38px); }
+.legal-hero p { color: rgba(255,255,255,0.75); margin-top: 10px; }
+
+.legal-content { padding: var(--space-6) 0; }
+.legal-content .container { max-width: 820px; }
+.legal-content h2 { font-size: 19px; margin: var(--space-4) 0 var(--space-2); }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { font-size: 14.5px; line-height: 1.75; color: #4a525e; margin-bottom: var(--space-2); }
+.legal-content ul { margin: 0 0 var(--space-2) var(--space-3); }
+.legal-content li { font-size: 14.5px; line-height: 1.75; color: #4a525e; margin-bottom: 6px; }
+.legal-content .legal-updated { font-size: 12.5px; color: #8b93a1; margin-bottom: var(--space-4); }
+
+.error-page {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: var(--space-4);
+}
+.error-page .error-code {
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(80px, 16vw, 160px);
+  background: var(--gradient-accent); -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1;
+}
+.error-page h1 { font-size: 22px; margin-top: var(--space-2); }
+.error-page p { color: #5b6472; margin: var(--space-2) 0 var(--space-3); max-width: 420px; }

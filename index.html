@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ColabUp — Conectando ideas, talento y oportunidades</title>
+<meta name="description" content="ColabUp es la plataforma de networking y colaboración que conecta estudiantes, egresados y emprendedores para transformar ideas en proyectos reales.">
+<meta name="theme-color" content="#1E3A5F">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ColabUp — Transforma ideas en proyectos reales">
+<meta property="og:description" content="Plataforma de networking, colaboración y empleabilidad para estudiantes, egresados y emprendedores.">
+<meta property="og:image" content="assets/images/logo.png">
+<meta property="og:locale" content="es_PE">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ColabUp — Transforma ideas en proyectos reales">
+<meta name="twitter:description" content="Conecta tu talento con nuevas oportunidades.">
+<meta name="twitter:image" content="assets/images/logo.png">
+
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+<link rel="canonical" href="https://www.colabup.app/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+<!-- Loading screen -->
+<div class="loading-screen" aria-hidden="true">
+  <div class="loader-mark">
+    <div class="loader-ring"></div>
+    <span>COLABUP</span>
+  </div>
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar">
+  <div class="container">
+    <a href="#" class="brand">
+      <img src="assets/images/logo.png" alt="ColabUp">
+    </a>
+
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="#explorar">Explorar</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#ayuda">Ayuda</a>
+    </nav>
+
+    <form class="nav-search" role="search" onsubmit="return false;">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" placeholder="¿Qué estás buscando?" aria-label="Buscar en ColabUp">
+    </form>
+
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-secondary">Ingresar</a>
+      <a href="register.html" class="btn btn-primary">Registrarse</a>
+    </div>
+
+    <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-backdrop"></div>
+<nav class="mobile-menu" aria-label="Navegación móvil">
+  <a href="#explorar">Explorar</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#nosotros">Nosotros</a>
+  <a href="#ayuda">Ayuda</a>
+  <a href="login.html" class="btn btn-secondary btn-block">Ingresar</a>
+  <a href="register.html" class="btn btn-primary btn-block">Registrarse ahora</a>
+</nav>
+
+<main id="main-content">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-rings" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+        <circle cx="950" cy="120" r="260" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+        <circle cx="950" cy="120" r="180" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+        <circle cx="120" cy="600" r="220" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Startup &amp; Networking Platform</span>
+          <h1>ColabUp: transforma <span class="grad-word">ideas</span> en proyectos reales</h1>
+          <p class="hero-sub">Sé parte de esta comunidad y del futuro de la innovación. Conecta tu talento con estudiantes, egresados y emprendedores que ya están construyendo equipos colaborativos.</p>
+          <div class="hero-actions">
+            <a href="register.html" class="btn btn-accent">Registrarse ahora <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="#proyectos" class="btn btn-ghost-light">Explorar proyectos</a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-avatars">
+              <span>MA</span><span>RT</span><span>CV</span><span>DP</span>
+            </div>
+            <span class="trust-text"><strong>+1,200 personas</strong> ya están colaborando</span>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat"><strong data-count-to="1200" data-suffix="+">0</strong><span>Estudiantes conectados</span></div>
+            <div class="hero-stat"><strong data-count-to="340" data-suffix="+">0</strong><span>Proyectos publicados</span></div>
+            <div class="hero-stat"><strong data-count-to="96" data-suffix="%">0</strong><span>Satisfacción de usuarios</span></div>
+          </div>
+        </div>
+
+        <div class="hero-mockup" aria-hidden="true">
+          <div class="hero-float-card fc-1"><i class="fa-solid fa-circle-check"></i> Postulación enviada</div>
+          <div class="browser-frame">
+            <div class="browser-bar"><span></span><span></span><span></span><span class="browser-url">app.colabup.app/dashboard</span></div>
+            <div class="mock-app">
+              <div class="mock-sidebar">
+                <span class="is-active"><i class="fa-solid fa-grip"></i></span>
+                <span><i class="fa-solid fa-user"></i></span>
+                <span><i class="fa-solid fa-diagram-project"></i></span>
+                <span><i class="fa-solid fa-users-rectangle"></i></span>
+                <span><i class="fa-solid fa-message"></i></span>
+              </div>
+              <div class="mock-main">
+                <div class="mock-banner"></div>
+                <div class="mock-stats"><span></span><span></span><span></span></div>
+                <div class="mock-cards"><span></span><span></span><span></span><span></span></div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-float-card fc-2"><i class="fa-solid fa-users"></i> 3 nuevos colaboradores</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MISIÓN & VISIÓN ============ -->
+  <section id="mision-vision">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Quiénes somos</span>
+        <h2>Misión &amp; Visión</h2>
+        <p>El propósito que guía cada decisión que tomamos en ColabUp.</p>
+      </div>
+      <div class="mv-grid">
+        <article class="mv-card">
+          <div class="mv-bg" style="background-image:url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=900&q=60');"></div>
+          <div class="mv-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></div>
+          <h3>Misión</h3>
+          <p>Facilitar la gestión de proyectos, permitiendo que emprendedores, estudiantes y profesionales puedan transformar sus ideas en soluciones reales.</p>
+        </article>
+        <article class="mv-card">
+          <div class="mv-bg" style="background-image:url('https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=60');"></div>
+          <div class="mv-icon"><i class="fa-solid fa-eye" aria-hidden="true"></i></div>
+          <h3>Visión</h3>
+          <p>Contribuir al crecimiento de la innovación mediante la creación de un espacio digital donde las ideas puedan generar impacto en distintos sectores de la sociedad.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ¿POR QUÉ COLABUP? ============ -->
+  <section class="why" id="beneficios">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Beneficios</span>
+        <h2>¿Por qué ColabUp?</h2>
+        <p>Todo lo que necesitas para encontrar oportunidades y construir equipos, en un solo lugar.</p>
+      </div>
+      <div class="why-grid cols-4">
+        <article class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+          <h3>Ahorro de tiempo</h3>
+          <p>Centraliza la comunicación y gestión de tareas en un solo lugar, sin saltar entre apps.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-sliders" aria-hidden="true"></i></div>
+          <h3>Flexibilidad</h3>
+          <p>Permite colaboraciones adaptables a diversos horarios y niveles de compromiso.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+          <h3>Dinámica y moderna</h3>
+          <p>Interfaz intuitiva y ágil que utiliza metodologías actuales para conectar usuarios de forma eficiente.</p>
+        </article>
+        <article class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+          <h3>Comunidad verificada</h3>
+          <p>Perfiles reales de estudiantes y egresados, con control total sobre tu privacidad.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO FUNCIONA ============ -->
+  <section id="como-funciona">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Proceso</span>
+        <h2>Cómo funciona</h2>
+        <p>De la idea al equipo de trabajo, en cuatro pasos.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card">
+          <span class="step-num">1</span>
+          <h3>Crea tu perfil</h3>
+          <p>Registra tus habilidades, experiencia y los proyectos en los que quieres colaborar.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">2</span>
+          <h3>Explora oportunidades</h3>
+          <p>Filtra proyectos y personas por categoría, modalidad y nivel de experiencia requerido.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">3</span>
+          <h3>Conecta y postula</h3>
+          <p>Envía tu solicitud de colaboración y recibe confirmación directa del equipo.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-num">4</span>
+          <h3>Colabora y crece</h3>
+          <p>Gestiona tareas, archivos y avances del proyecto desde tu propio panel.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FUNCIONALIDADES / EXPLORAR ============ -->
+  <section id="explorar">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Funcionalidades</span>
+        <h2>Todo lo que puedes hacer en ColabUp</h2>
+        <p>Una plataforma pensada para networking, portafolio profesional y gestión de proyectos.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-people-group" aria-hidden="true"></i></div>
+          <h3>Networking inteligente</h3>
+          <p>Recomendaciones de contactos según tus habilidades e intereses.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
+          <h3>Gestión de proyectos</h3>
+          <p>Tareas, archivos y progreso del equipo en un solo tablero.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-id-card" aria-hidden="true"></i></div>
+          <h3>Portafolio profesional</h3>
+          <p>Muestra tu experiencia, certificaciones y proyectos destacados.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-message" aria-hidden="true"></i></div>
+          <h3>Mensajería en tiempo real</h3>
+          <p>Conversaciones, adjuntos y estado en línea para coordinar sin fricción.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-users-rectangle" aria-hidden="true"></i></div>
+          <h3>Equipos y grupos</h3>
+          <p>Crea grupos de trabajo, comparte calendario y archivos compartidos.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-bell" aria-hidden="true"></i></div>
+          <h3>Notificaciones</h3>
+          <p>Mantente al día con alertas relevantes sobre tus proyectos y postulaciones.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+          <h3>Estadísticas de progreso</h3>
+          <p>Visualiza el avance de tus proyectos y tu actividad en la comunidad.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+          <h3>Privacidad y control</h3>
+          <p>Decide qué información de tu perfil es visible para la comunidad.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonios">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Prueba social</span>
+        <h2>Historias que pasaron de idea a ejecución real</h2>
+        <p>Estudiantes y emprendedores que ya encontraron a su equipo en ColabUp.</p>
+      </div>
+      <div class="testi-track-wrap">
+        <div class="testi-track">
+          <article class="testi-card">
+            <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="testi-quote">Encontré a mi equipo de tesis en menos de una semana. El filtro por habilidades me ahorró muchísimo tiempo.</p>
+            <div class="testi-person">
+              <span class="testi-avatar">MA</span>
+              <div><strong>Michelle Aguilar</strong><span>Estudiante de Ing. de Sistemas</span></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="testi-quote">Publiqué mi proyecto un viernes y para el lunes ya tenía dos colaboradores con el perfil exacto que necesitaba.</p>
+            <div class="testi-person">
+              <span class="testi-avatar">RT</span>
+              <div><strong>Renzo Torres</strong><span>Fundador, proyecto EduIA</span></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="testi-quote">El panel de tareas y el chat integrado hicieron que coordinar con egresados de otras ciudades fuera muy simple.</p>
+            <div class="testi-person">
+              <span class="testi-avatar">CV</span>
+              <div><strong>Camila Vidal</strong><span>Egresada, Ing. de Software</span></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="testi-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+            <p class="testi-quote">ColabUp me ayudó a armar un equipo multidisciplinario para mi startup en menos de un mes.</p>
+            <div class="testi-person">
+              <span class="testi-avatar">DP</span>
+              <div><strong>Diego Pinto</strong><span>Emprendedor</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="testi-controls">
+        <button class="testi-arrow testi-prev" aria-label="Testimonio anterior"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="testi-dots"></div>
+        <button class="testi-arrow testi-next" aria-label="Siguiente testimonio"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NUESTRO EQUIPO ============ -->
+  <section id="nosotros">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">El equipo</span>
+        <h2>Nuestro equipo</h2>
+        <p>Un equipo multidisciplinario de ingeniería que diseñó y construyó ColabUp de principio a fin.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-server"></i></span>
+          <div class="team-avatar">FT</div>
+          <h3>Fabrizio Torres Garcia</h3>
+          <span>Ing. de Sistemas de Información</span>
+          <p class="team-bio">Arquitectura de datos y lógica de proyectos.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Fabrizio Torres"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Fabrizio Torres"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-code"></i></span>
+          <div class="team-avatar">FA</div>
+          <h3>Fabrizio Arias Dextre</h3>
+          <span>Ing. de Software</span>
+          <p class="team-bio">Desarrollo frontend y experiencia de usuario.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Fabrizio Arias"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Fabrizio Arias"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-robot"></i></span>
+          <div class="team-avatar">JZ</div>
+          <h3>Jose Zevallos Arones</h3>
+          <span>Ing. de Sistemas de Información</span>
+          <p class="team-bio">Automatización, chatbot y notificaciones.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Jose Zevallos"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Jose Zevallos"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-palette"></i></span>
+          <div class="team-avatar">MD</div>
+          <h3>Miguel Domenack Angeles</h3>
+          <span>Ing. de Software</span>
+          <p class="team-bio">Diseño de interfaz y sistema visual.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Miguel Domenack"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Miguel Domenack"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+          <div class="team-avatar">JC</div>
+          <h3>Joan Calderon Tarazona</h3>
+          <span>Ing. de Sistemas de Información</span>
+          <p class="team-bio">UX Research y validación con usuarios.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Joan Calderon"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Joan Calderon"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+        <article class="team-card">
+          <span class="team-role-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+          <div class="team-avatar">HA</div>
+          <h3>Heren Aujtukai Petsain</h3>
+          <span>Ing. de Sistemas de Información</span>
+          <p class="team-bio">Gestión de proyecto y control de calidad.</p>
+          <div class="team-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Heren Aujtukai"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Heren Aujtukai"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS DESTACADOS ============ -->
+  <section id="proyectos">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Comunidad activa</span>
+        <h2>Proyectos destacados ahora mismo</h2>
+        <p>Una muestra real de lo que se está construyendo en ColabUp. Regístrate para ver el listado completo y postular.</p>
+      </div>
+      <div class="showcase-grid">
+        <article class="showcase-card">
+          <div class="showcase-thumb" style="background-image:url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=600&q=60');"><span>Abierto</span></div>
+          <div class="showcase-body">
+            <span class="sc-category">Sostenibilidad</span>
+            <h3>App de reciclaje inteligente</h3>
+            <p>Plataforma móvil que conecta vecinos con puntos de reciclaje cercanos usando geolocalización.</p>
+            <div class="showcase-tags"><span>React Native</span><span>Node.js</span></div>
+            <div class="showcase-footer"><span><i class="fa-solid fa-users"></i> 3 colaboradores</span><span>12 postulantes</span></div>
+          </div>
+        </article>
+        <article class="showcase-card">
+          <div class="showcase-thumb" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=60');"><span>En curso</span></div>
+          <div class="showcase-body">
+            <span class="sc-category">EdTech</span>
+            <h3>EduIA — plataforma educativa</h3>
+            <p>Asistente de estudio con IA que genera resúmenes y cuestionarios personalizados.</p>
+            <div class="showcase-tags"><span>Python</span><span>IA</span></div>
+            <div class="showcase-footer"><span><i class="fa-solid fa-users"></i> 2 colaboradores</span><span>8 postulantes</span></div>
+          </div>
+        </article>
+        <article class="showcase-card">
+          <div class="showcase-thumb" style="background-image:url('https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=600&q=60');"><span>Abierto</span></div>
+          <div class="showcase-body">
+            <span class="sc-category">UX/UI</span>
+            <h3>Rediseño UX — Portal de empleabilidad</h3>
+            <p>Investigación y rediseño de la experiencia de búsqueda de prácticas profesionales.</p>
+            <div class="showcase-tags"><span>Figma</span><span>Accesibilidad</span></div>
+            <div class="showcase-footer"><span><i class="fa-solid fa-users"></i> 1 colaborador</span><span>5 postulantes</span></div>
+          </div>
+        </article>
+      </div>
+      <div class="showcase-more reveal">
+        <a href="register.html" class="btn btn-primary">Crear cuenta y ver todos los proyectos <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROADMAP ============ -->
+  <section id="roadmap">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Hoja de ruta</span>
+        <h2>Roadmap</h2>
+        <p>Hacia dónde va ColabUp en los próximos meses.</p>
+      </div>
+      <div class="roadmap-timeline">
+        <div class="roadmap-step reveal">
+          <span class="roadmap-step-dot done"><i class="fa-solid fa-check"></i></span>
+          <div class="roadmap-card">
+            <div class="roadmap-card-top"><strong>Q2 2026</strong><span class="roadmap-status done">Completado</span></div>
+            <p>Lanzamiento de la landing page, registro y autenticación de usuarios.</p>
+            <ul><li>Landing page responsive y accesible</li><li>Login / registro con validaciones</li></ul>
+          </div>
+        </div>
+        <div class="roadmap-step reveal">
+          <span class="roadmap-step-dot progress"><i class="fa-solid fa-spinner"></i></span>
+          <div class="roadmap-card">
+            <div class="roadmap-card-top"><strong>Q3 2026</strong><span class="roadmap-status progress">En curso</span></div>
+            <p>Dashboard, portafolio profesional y gestión de proyectos.</p>
+            <ul><li>Dashboard con estadísticas y actividad</li><li>Perfil, portafolio y postulaciones</li></ul>
+          </div>
+        </div>
+        <div class="roadmap-step reveal">
+          <span class="roadmap-step-dot next"><i class="fa-regular fa-clock"></i></span>
+          <div class="roadmap-card">
+            <div class="roadmap-card-top"><strong>Q4 2026</strong><span class="roadmap-status next">Próximamente</span></div>
+            <p>Mensajería en tiempo real, grupos y recomendaciones inteligentes.</p>
+            <ul><li>Chat con estado en línea y adjuntos</li><li>Grupos con tareas y archivos compartidos</li></ul>
+          </div>
+        </div>
+        <div class="roadmap-step reveal">
+          <span class="roadmap-step-dot next"><i class="fa-solid fa-mobile-screen"></i></span>
+          <div class="roadmap-card">
+            <div class="roadmap-card-top"><strong>Q1 2027</strong><span class="roadmap-status next">Próximamente</span></div>
+            <p>Aplicaciones móviles nativas para iOS y Android.</p>
+            <ul><li>Notificaciones push</li><li>Modo offline para portafolio</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARTNERS ============ -->
+  <section id="partners">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom: var(--space-4);">
+        <span class="eyebrow">Aliados</span>
+        <h2>Partners &amp; sponsors</h2>
+        <p>Instituciones y comunidades que respaldan el crecimiento de ColabUp.</p>
+      </div>
+      <div class="partners-grid reveal">
+        <div class="partner-card"><span class="partner-icon"><i class="fa-solid fa-graduation-cap"></i></span><strong>UPC</strong><span>Universidad aliada</span></div>
+        <div class="partner-card"><span class="partner-icon"><i class="fa-solid fa-microchip"></i></span><strong>Innovatech</strong><span>Tecnología</span></div>
+        <div class="partner-card"><span class="partner-icon"><i class="fa-solid fa-rocket"></i></span><strong>NextGen Labs</strong><span>Aceleradora</span></div>
+        <div class="partner-card"><span class="partner-icon"><i class="fa-solid fa-people-group"></i></span><strong>HubTalent</strong><span>Comunidad de talento</span></div>
+        <div class="partner-card"><span class="partner-icon"><i class="fa-solid fa-city"></i></span><strong>StartUp Lima</strong><span>Red de emprendimiento</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="ayuda">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>¿Tienes dudas?</h2>
+        <p>Esto es lo que más nos preguntan los nuevos usuarios.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿ColabUp tiene costo?
+            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-answer"><p>El plan básico es gratuito. Ofrecemos un plan Pro con funciones adicionales de analítica y visibilidad para equipos y emprendedores.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Quién puede unirse a la plataforma?
+            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-answer"><p>Estudiantes, egresados y emprendedores que busquen formar equipos, encontrar oportunidades laborales o colaborar en proyectos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Cómo publico un proyecto?
+            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-answer"><p>Desde tu panel, selecciona "Crear proyecto" y completa título, descripción y roles necesarios en menos de 4 pasos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            ¿Mis datos están protegidos?
+            <span class="faq-icon"><i class="fa-solid fa-plus"></i></span>
+          </button>
+          <div class="faq-answer"><p>Sí. Aplicamos buenas prácticas de protección de datos y puedes revisar el detalle en nuestra <a href="privacy.html" style="text-decoration:underline;">política de privacidad</a>.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section>
+    <div class="cta-band container">
+      <h2>Conecta tu talento con nuevas oportunidades</h2>
+      <p>Crea, colabora y crece con ColabUp. Es gratis para empezar.</p>
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-accent">Registrarse ahora</a>
+        <a href="#explorar" class="btn btn-ghost-light">Ver funcionalidades</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Hablemos</span>
+        <h2>Contáctanos</h2>
+        <p>Escríbenos tus dudas y te responderemos a la brevedad.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="contact-name">Nombre completo</label>
+              <input type="text" id="contact-name" name="name" placeholder="Tu nombre" required>
+              <span class="field-error" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="contact-email">Correo electrónico</label>
+              <input type="email" id="contact-email" name="email" placeholder="tucorreo@ejemplo.com" required>
+              <span class="field-error" role="alert"></span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="contact-phone">Teléfono <span style="font-weight:400;color:#8b93a1;">(opcional)</span></label>
+            <input type="tel" id="contact-phone" name="phone" placeholder="+51 999 999 999">
+            <span class="field-error" role="alert"></span>
+          </div>
+          <div class="field">
+            <label for="contact-message">Mensaje</label>
+            <textarea id="contact-message" name="message" placeholder="Cuéntanos en qué podemos ayudarte" required></textarea>
+            <span class="field-error" role="alert"></span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar mensaje</button>
+        </form>
+
+        <aside class="contact-side">
+          <div>
+            <a href="#" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+            <p>Conectando ideas, talento y oportunidades. Escríbenos o síguenos en redes para más novedades.</p>
+            <div class="contact-info">
+              <div class="contact-info-item"><span class="icon-circle"><i class="fa-solid fa-envelope"></i></span> hola@colabup.app</div>
+              <div class="contact-info-item"><span class="icon-circle"><i class="fa-solid fa-phone"></i></span> +51 999 888 777</div>
+              <div class="contact-info-item"><span class="icon-circle"><i class="fa-solid fa-location-dot"></i></span> Lima, Perú</div>
+            </div>
+          </div>
+          <div class="social-row" aria-label="Redes sociales de ColabUp">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+      <p>Plataforma de networking, colaboración y empleabilidad para estudiantes, egresados y emprendedores.</p>
+      <div class="social-row" aria-label="Redes sociales">
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Producto</h4>
+      <ul>
+        <li><a href="#explorar">Funcionalidades</a></li>
+        <li><a href="#proyectos">Roadmap</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Compañía</h4>
+      <ul>
+        <li><a href="#nosotros">Equipo</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy.html">Privacidad</a></li>
+        <li><a href="terms.html">Términos</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col footer-newsletter">
+      <h4>Newsletter</h4>
+      <p style="font-size:13.5px;">Recibe novedades de ColabUp en tu correo.</p>
+      <form>
+        <label for="newsletter-email" class="visually-hidden">Correo electrónico</label>
+        <input type="email" id="newsletter-email" placeholder="tucorreo@ejemplo.com" required>
+        <button type="submit" class="btn btn-accent">Unirme</button>
+      </form>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>ColabUp © 2026 — Todos los derechos reservados.</span>
+    <a href="sitemap.html" style="text-decoration:underline;">Mapa del sitio</a>
+  </div>
+</footer>
+
+<!-- ============ UTILITY ELEMENTS ============ -->
+<button class="back-to-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>
