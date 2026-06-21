@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos — ColabUp</title>
+<meta name="theme-color" content="#1E3A5F">
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/projects.css">
+<link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="sidebar">
+    <a href="index.html" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+    <nav class="app-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="profile.html"><i class="fa-solid fa-user"></i> Mi perfil</a>
+      <a href="projects.html" class="is-active"><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
+      <a href="groups.html"><i class="fa-solid fa-users-rectangle"></i> Grupos</a>
+      <a href="messages.html"><i class="fa-solid fa-message"></i> Mensajes</a>
+      <a href="notifications.html"><i class="fa-solid fa-bell"></i> Notificaciones</a>
+      <a href="settings.html"><i class="fa-solid fa-gear"></i> Configuración</a>
+      <a href="help.html"><i class="fa-solid fa-circle-question"></i> Ayuda</a>
+    </nav>
+    <div class="app-sidebar-footer">
+      <button id="logout-btn" style="width:100%; background:none; border:none; cursor:pointer; padding:0;">
+        <span style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; font-family: var(--font-display); color: rgba(255,255,255,0.7);">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+        </span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="icon-btn nav-toggle-mobile" id="sidebar-toggle" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search">
+        <i class="fa-solid fa-magnifying-glass" style="color:#8b93a1;"></i>
+        <input type="search" placeholder="Buscar proyectos, personas, grupos...">
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Notificaciones"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+        <button class="icon-btn" aria-label="Mensajes"><i class="fa-solid fa-message"></i></button>
+        <div class="user-chip">
+          <span class="avatar" id="user-avatar-topbar">U</span>
+          <span id="user-name-topbar">Usuario</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <section class="welcome-banner" style="margin-bottom: var(--space-3);">
+        <div>
+          <h1>Proyectos</h1>
+          <p>Explora oportunidades de colaboración o publica tu propia idea.</p>
+        </div>
+        <button class="btn btn-accent" id="open-create-btn"><i class="fa-solid fa-plus"></i> Crear proyecto</button>
+      </section>
+
+      <div class="projects-toolbar">
+        <div class="projects-search">
+          <i class="fa-solid fa-magnifying-glass" style="color:#8b93a1;"></i>
+          <input type="search" id="search-input" placeholder="Buscar por nombre, tecnología o categoría...">
+        </div>
+        <select class="filter-select" id="category-filter">
+          <option value="Todos">Todas las categorías</option>
+          <option value="Sostenibilidad">Sostenibilidad</option>
+          <option value="EdTech">EdTech</option>
+          <option value="UX/UI">UX/UI</option>
+          <option value="Emprendimiento">Emprendimiento</option>
+          <option value="Fintech">Fintech</option>
+          <option value="IA">IA</option>
+        </select>
+        <button class="filter-chip" id="fav-toggle" type="button" style="border-radius: var(--radius-pill);"><i class="fa-solid fa-star" style="margin-right:6px;"></i>Favoritos</button>
+        <div class="view-toggle">
+          <button id="view-grid" class="is-active" aria-label="Vista de cuadrícula"><i class="fa-solid fa-table-cells"></i></button>
+          <button id="view-list" aria-label="Vista de lista"><i class="fa-solid fa-list"></i></button>
+        </div>
+      </div>
+
+      <div class="filter-chips">
+        <button class="filter-chip is-active" data-status="all">Todos</button>
+        <button class="filter-chip" data-status="Abierto">Abiertos</button>
+        <button class="filter-chip" data-status="En curso">En curso</button>
+        <button class="filter-chip" data-status="Completado">Completados</button>
+      </div>
+
+      <p id="results-count" style="font-size:13px; color:#8b93a1; margin-bottom: var(--space-2);"></p>
+
+      <div class="projects-grid" id="projects-grid"></div>
+    </main>
+  </div>
+</div>
+
+<!-- Detail modal -->
+<div class="modal-backdrop" id="modal-backdrop"></div>
+<div class="detail-modal" id="detail-modal" role="dialog" aria-modal="true">
+  <div class="detail-banner" id="detail-banner">
+    <button class="modal-close" id="detail-close" type="button" style="position:absolute; top:14px; right:14px;"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div class="detail-body">
+    <div class="detail-status-row">
+      <span class="task-tag low" id="detail-status">Abierto</span>
+      <span class="project-meta-mini" id="detail-category">Categoría</span>
+    </div>
+    <h2 id="detail-title">Título del proyecto</h2>
+    <div class="detail-meta-row">
+      <span><i class="fa-solid fa-laptop"></i> <span id="detail-modality">—</span></span>
+      <span><i class="fa-regular fa-clock"></i> <span id="detail-commitment">—</span></span>
+      <span><i class="fa-solid fa-users"></i> <span id="detail-applicants">—</span></span>
+    </div>
+    <div class="detail-section">
+      <h4>Descripción</h4>
+      <p id="detail-desc">—</p>
+    </div>
+    <div class="detail-section">
+      <h4>Equipo actual</h4>
+      <div class="detail-team" id="detail-team"></div>
+    </div>
+    <div class="detail-actions">
+      <button class="btn btn-primary" id="detail-apply-btn">Postular a este proyecto</button>
+      <button class="btn btn-secondary" id="detail-close-2" type="button">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Create project modal -->
+<div class="modal-box" id="create-modal" role="dialog" aria-modal="true" style="position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:701; opacity:0; visibility:hidden; width:min(480px,92vw); background:var(--color-white); border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); padding:var(--space-4); max-height:88vh; overflow-y:auto;">
+  <button class="modal-close" id="create-close" type="button" style="position:absolute; top:14px; right:14px; background:none; border:none; color:#8b93a1; font-size:16px;"><i class="fa-solid fa-xmark"></i></button>
+  <h2 style="font-size:18px; margin-bottom: var(--space-3);">Publicar nuevo proyecto</h2>
+  <form id="form-create-project" novalidate>
+    <div class="field">
+      <label for="new-title">Título del proyecto</label>
+      <input type="text" id="new-title" placeholder="Ej. App para gestión de horarios" required>
+    </div>
+    <div class="field">
+      <label for="new-category">Categoría</label>
+      <input type="text" id="new-category" placeholder="Ej. EdTech, Fintech, Sostenibilidad..." required>
+    </div>
+    <div class="field">
+      <label for="new-desc">Descripción</label>
+      <textarea id="new-desc" placeholder="¿De qué trata el proyecto y qué roles necesitas?" required></textarea>
+    </div>
+    <div class="field">
+      <label for="new-tags">Tecnologías / etiquetas (separadas por coma)</label>
+      <input type="text" id="new-tags" placeholder="Ej. React, Figma, Node.js">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Publicar proyecto</button>
+  </form>
+</div>
+
+<style>
+  #create-modal.is-open { opacity: 1 !important; visibility: visible !important; transform: translate(-50%, -50%) scale(1) !important; }
+</style>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/auth.js"></script>
+<script>
+  ColabAuth.requireAuth('login.html');
+  const session = ColabAuth.getSession();
+  if (session) {
+    const displayName = session.name || session.email;
+    document.getElementById('user-name-topbar').textContent = displayName;
+    document.getElementById('user-avatar-topbar').textContent = displayName.slice(0, 2).toUpperCase();
+  }
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    ColabAuth.logout();
+    window.location.href = 'index.html';
+  });
+</script>
+<script src="js/dashboard.js"></script>
+<script src="js/projects.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

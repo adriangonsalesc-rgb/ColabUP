@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión — ColabUp</title>
+<meta name="description" content="Inicia sesión en ColabUp y continúa colaborando en tus proyectos.">
+<meta name="theme-color" content="#1E3A5F">
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<main class="auth-page">
+
+  <!-- Visual / brand side -->
+  <section class="auth-visual" aria-hidden="true">
+    <a href="index.html" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+
+    <div class="auth-visual-copy">
+      <h2>Tu próximo equipo te está esperando</h2>
+      <p>Conecta con estudiantes, egresados y emprendedores que ya están construyendo proyectos reales en ColabUp.</p>
+      <div class="auth-visual-stats">
+        <div><strong>1,200+</strong><span>Estudiantes conectados</span></div>
+        <div><strong>340+</strong><span>Proyectos activos</span></div>
+        <div><strong>96%</strong><span>Satisfacción</span></div>
+      </div>
+    </div>
+
+    <blockquote class="auth-visual-quote">
+      “Publiqué mi proyecto un viernes y para el lunes ya tenía dos colaboradores con el perfil exacto que necesitaba.”
+      <strong>— Renzo Torres, fundador de EduIA</strong>
+    </blockquote>
+  </section>
+
+  <!-- Form side -->
+  <section class="auth-form-side">
+    <div class="auth-card">
+      <a href="index.html" class="brand brand-mobile"><img src="assets/images/logo.png" alt="ColabUp"></a>
+
+      <h1>Bienvenido de vuelta</h1>
+      <p class="auth-sub">¿Aún no tienes cuenta? <a href="register.html">Regístrate gratis</a></p>
+
+      <div class="form-banner" id="login-banner" role="alert"></div>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="login-email">Correo electrónico</label>
+          <input type="email" id="login-email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="username" required>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="login-password">Contraseña</label>
+          <div class="field-password-wrap">
+            <input type="password" id="login-password" name="password" placeholder="Tu contraseña" autocomplete="current-password" required>
+            <button type="button" class="toggle-password" aria-label="Mostrar contraseña" data-target="login-password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <div class="field-options">
+          <label class="checkbox-row">
+            <input type="checkbox" id="login-remember" checked>
+            Recordarme
+          </label>
+          <a href="#" class="link-muted" id="forgot-password-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-loading" id="login-submit">
+          <span class="spinner"></span>
+          <span class="btn-label">Iniciar sesión</span>
+        </button>
+      </form>
+
+      <p style="margin-top:12px; font-size:12.5px; color:#8b93a1;">
+        Cuenta demo: <strong>demo@colabup.app</strong> / <strong>ColabUp2026!</strong>
+      </p>
+
+      <div class="divider">o continúa con</div>
+      <div class="social-auth">
+        <button type="button" class="btn-social" id="google-auth"><i class="fa-brands fa-google"></i> Continuar con Google</button>
+        <button type="button" class="btn-social" id="linkedin-auth"><i class="fa-brands fa-linkedin"></i> Continuar con LinkedIn</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Forgot password modal -->
+<div class="menu-backdrop" id="modal-backdrop"></div>
+<div class="auth-card" id="forgot-modal" role="dialog" aria-modal="true" aria-labelledby="forgot-title"
+     style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:var(--color-white); padding:32px; border-radius:var(--radius-lg); box-shadow:var(--shadow-lg); z-index:700; width:min(420px, 90vw);">
+  <h2 id="forgot-title" style="font-size:20px; margin-bottom:8px;">Recuperar contraseña</h2>
+  <p style="font-size:14px; color:#5b6472; margin-bottom:var(--space-3);">Ingresa tu correo y te enviaremos instrucciones para restablecer tu contraseña.</p>
+  <form id="forgot-form" novalidate>
+    <div class="field">
+      <label for="forgot-email">Correo electrónico</label>
+      <input type="email" id="forgot-email" placeholder="tucorreo@ejemplo.com" required>
+      <span class="field-error" role="alert"></span>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Enviar instrucciones</button>
+    <button type="button" class="btn btn-secondary btn-block" id="forgot-cancel" style="margin-top:10px;">Cancelar</button>
+  </form>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/auth.js"></script>
+<script>
+(() => {
+  'use strict';
+  ColabAuth.redirectIfAuthed('dashboard.html');
+
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  function showToast(message, type = 'success') {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.remove('is-success', 'is-error');
+    toast.classList.add(type === 'error' ? 'is-error' : 'is-success', 'is-visible');
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 3600);
+  }
+
+  /* Show / hide password */
+  document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      btn.innerHTML = isPassword ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+      btn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    });
+  });
+
+  /* Login form */
+  const form = document.getElementById('login-form');
+  const banner = document.getElementById('login-banner');
+  const submitBtn = document.getElementById('login-submit');
+
+  function setFieldError(input, message) {
+    const field = input.closest('.field');
+    field.classList.toggle('is-invalid', !!message);
+    field.classList.toggle('is-valid', !message && input.value.trim() !== '');
+    const errEl = field.querySelector('.field-error');
+    if (errEl) errEl.textContent = message || '';
+  }
+
+  function validate() {
+    const email = document.getElementById('login-email');
+    const password = document.getElementById('login-password');
+    let valid = true;
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      setFieldError(email, 'Ingresa un correo electrónico válido.');
+      valid = false;
+    } else setFieldError(email, '');
+
+    if (password.value.length < 6) {
+      setFieldError(password, 'La contraseña debe tener al menos 6 caracteres.');
+      valid = false;
+    } else setFieldError(password, '');
+
+    return valid;
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    banner.classList.remove('is-visible', 'is-error', 'is-success');
+    if (!validate()) return;
+
+    submitBtn.setAttribute('data-loading', 'true');
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      const result = ColabAuth.login({
+        email: document.getElementById('login-email').value.trim(),
+        password: document.getElementById('login-password').value,
+        remember: document.getElementById('login-remember').checked,
+      });
+
+      submitBtn.removeAttribute('data-loading');
+      submitBtn.disabled = false;
+
+      if (!result.ok) {
+        banner.textContent = result.error;
+        banner.classList.add('is-visible', 'is-error');
+        return;
+      }
+
+      banner.textContent = '¡Bienvenido! Redirigiendo a tu dashboard...';
+      banner.classList.add('is-visible', 'is-success');
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 700);
+    }, 800);
+  });
+
+  ['login-email', 'login-password'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      const field = document.getElementById(id).closest('.field');
+      if (field.classList.contains('is-invalid')) validate();
+    });
+  });
+
+  /* Forgot password modal */
+  const modal = document.getElementById('forgot-modal');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  document.getElementById('forgot-password-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.style.display = 'block';
+    modalBackdrop.classList.add('is-open');
+    document.getElementById('forgot-email').focus();
+  });
+  function closeModal() {
+    modal.style.display = 'none';
+    modalBackdrop.classList.remove('is-open');
+  }
+  document.getElementById('forgot-cancel').addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  document.getElementById('forgot-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const emailInput = document.getElementById('forgot-email');
+    const field = emailInput.closest('.field');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      field.classList.add('is-invalid');
+      field.querySelector('.field-error').textContent = 'Ingresa un correo válido.';
+      return;
+    }
+    field.classList.remove('is-invalid');
+    closeModal();
+    showToast('Si el correo existe, recibirás instrucciones en breve.', 'success');
+    document.getElementById('forgot-form').reset();
+  });
+
+  /* Social auth stubs (simulated, clearly labelled) */
+  document.getElementById('google-auth').addEventListener('click', () => {
+    showToast('La autenticación con Google estará disponible próximamente.', 'error');
+  });
+  document.getElementById('linkedin-auth').addEventListener('click', () => {
+    showToast('La autenticación con LinkedIn estará disponible próximamente.', 'error');
+  });
+})();
+</script>
+</body>
+</html>

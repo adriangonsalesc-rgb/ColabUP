@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crear cuenta — ColabUp</title>
+<meta name="description" content="Regístrate gratis en ColabUp y empieza a colaborar en proyectos reales.">
+<meta name="theme-color" content="#1E3A5F">
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<main class="auth-page">
+
+  <section class="auth-visual" aria-hidden="true">
+    <a href="index.html" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+
+    <div class="auth-visual-copy">
+      <h2>Crea tu perfil y empieza a colaborar hoy</h2>
+      <p>Construye tu portafolio, postula a proyectos y conecta con equipos que buscan tu talento.</p>
+      <div class="auth-visual-stats">
+        <div><strong>1,200+</strong><span>Estudiantes conectados</span></div>
+        <div><strong>340+</strong><span>Proyectos activos</span></div>
+        <div><strong>96%</strong><span>Satisfacción</span></div>
+      </div>
+    </div>
+
+    <blockquote class="auth-visual-quote">
+      “Encontré a mi equipo de tesis en menos de una semana. El filtro por habilidades me ahorró muchísimo tiempo.”
+      <strong>— Michelle Aguilar, estudiante de Ing. de Sistemas</strong>
+    </blockquote>
+  </section>
+
+  <section class="auth-form-side">
+    <div class="auth-card">
+      <a href="index.html" class="brand brand-mobile"><img src="assets/images/logo.png" alt="ColabUp"></a>
+
+      <h1>Crea tu cuenta gratis</h1>
+      <p class="auth-sub">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></p>
+
+      <div class="form-banner" id="register-banner" role="alert"></div>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="reg-name">Nombre completo</label>
+          <input type="text" id="reg-name" name="name" placeholder="Tu nombre completo" autocomplete="name" required>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-email">Correo electrónico</label>
+          <input type="email" id="reg-email" name="email" placeholder="tucorreo@ejemplo.com" autocomplete="email" required>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-password">Contraseña</label>
+          <div class="field-password-wrap">
+            <input type="password" id="reg-password" name="password" placeholder="Crea una contraseña segura" autocomplete="new-password" required>
+            <button type="button" class="toggle-password" aria-label="Mostrar contraseña" data-target="reg-password">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <div class="strength-meter" id="strength-meter"><span></span><span></span><span></span><span></span></div>
+          <div class="strength-label" id="strength-label">Seguridad de la contraseña</div>
+          <ul class="password-rules" id="password-rules">
+            <li data-rule="length"><i class="fa-solid fa-circle"></i> Mínimo 8 caracteres</li>
+            <li data-rule="upper"><i class="fa-solid fa-circle"></i> Una letra mayúscula</li>
+            <li data-rule="number"><i class="fa-solid fa-circle"></i> Un número</li>
+            <li data-rule="special"><i class="fa-solid fa-circle"></i> Un carácter especial</li>
+          </ul>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <div class="field">
+          <label for="reg-password-confirm">Confirmar contraseña</label>
+          <div class="field-password-wrap">
+            <input type="password" id="reg-password-confirm" name="passwordConfirm" placeholder="Repite tu contraseña" autocomplete="new-password" required>
+            <button type="button" class="toggle-password" aria-label="Mostrar contraseña" data-target="reg-password-confirm">
+              <i class="fa-solid fa-eye"></i>
+            </button>
+          </div>
+          <span class="field-error" role="alert"></span>
+        </div>
+
+        <label class="terms-row">
+          <input type="checkbox" id="reg-terms" required>
+          <span>Acepto los <a href="terms.html" target="_blank">Términos de servicio</a> y la <a href="privacy.html" target="_blank">Política de privacidad</a> de ColabUp.</span>
+        </label>
+
+        <button type="submit" class="btn btn-primary btn-block btn-loading" id="register-submit">
+          <span class="spinner"></span>
+          <span class="btn-label">Crear cuenta</span>
+        </button>
+      </form>
+
+      <div class="divider">o regístrate con</div>
+      <div class="social-auth">
+        <button type="button" class="btn-social" id="google-auth"><i class="fa-brands fa-google"></i> Continuar con Google</button>
+        <button type="button" class="btn-social" id="linkedin-auth"><i class="fa-brands fa-linkedin"></i> Continuar con LinkedIn</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/auth.js"></script>
+<script>
+(() => {
+  'use strict';
+  ColabAuth.redirectIfAuthed('dashboard.html');
+
+  const toast = document.querySelector('.toast');
+  let toastTimer;
+  function showToast(message, type = 'success') {
+    clearTimeout(toastTimer);
+    toast.textContent = message;
+    toast.classList.remove('is-success', 'is-error');
+    toast.classList.add(type === 'error' ? 'is-error' : 'is-success', 'is-visible');
+    toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 3600);
+  }
+
+  document.querySelectorAll('.toggle-password').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      const isPassword = input.type === 'password';
+      input.type = isPassword ? 'text' : 'password';
+      btn.innerHTML = isPassword ? '<i class="fa-solid fa-eye-slash"></i>' : '<i class="fa-solid fa-eye"></i>';
+      btn.setAttribute('aria-label', isPassword ? 'Ocultar contraseña' : 'Mostrar contraseña');
+    });
+  });
+
+  function setFieldError(input, message) {
+    const field = input.closest('.field');
+    field.classList.toggle('is-invalid', !!message);
+    field.classList.toggle('is-valid', !message && input.value.trim() !== '');
+    const errEl = field.querySelector('.field-error');
+    if (errEl) errEl.textContent = message || '';
+  }
+
+  /* Password strength */
+  const passwordInput = document.getElementById('reg-password');
+  const meter = document.getElementById('strength-meter');
+  const label = document.getElementById('strength-label');
+  const rulesList = document.getElementById('password-rules');
+
+  function evaluatePassword(value) {
+    const rules = {
+      length: value.length >= 8,
+      upper: /[A-Z]/.test(value),
+      number: /[0-9]/.test(value),
+      special: /[^A-Za-z0-9]/.test(value),
+    };
+    Object.entries(rules).forEach(([key, met]) => {
+      const li = rulesList.querySelector(`[data-rule="${key}"]`);
+      li.classList.toggle('is-met', met);
+      li.querySelector('i').className = met ? 'fa-solid fa-check' : 'fa-solid fa-circle';
+    });
+    const score = Object.values(rules).filter(Boolean).length;
+    meter.className = 'strength-meter';
+    if (value.length === 0) { label.textContent = 'Seguridad de la contraseña'; return { score, rules }; }
+    if (score <= 1) { meter.classList.add('weak'); label.textContent = 'Débil'; }
+    else if (score === 2) { meter.classList.add('fair'); label.textContent = 'Aceptable'; }
+    else if (score === 3) { meter.classList.add('good'); label.textContent = 'Buena'; }
+    else { meter.classList.add('strong'); label.textContent = 'Fuerte'; }
+    return { score, rules };
+  }
+
+  passwordInput.addEventListener('input', () => evaluatePassword(passwordInput.value));
+
+  function validate() {
+    const name = document.getElementById('reg-name');
+    const email = document.getElementById('reg-email');
+    const password = document.getElementById('reg-password');
+    const confirm = document.getElementById('reg-password-confirm');
+    const terms = document.getElementById('reg-terms');
+    let valid = true;
+
+    if (name.value.trim().length < 2) {
+      setFieldError(name, 'Ingresa tu nombre completo.');
+      valid = false;
+    } else setFieldError(name, '');
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+      setFieldError(email, 'Ingresa un correo electrónico válido.');
+      valid = false;
+    } else setFieldError(email, '');
+
+    const { rules } = evaluatePassword(password.value);
+    const passwordValid = Object.values(rules).every(Boolean);
+    if (!passwordValid) {
+      setFieldError(password, 'La contraseña no cumple los requisitos mínimos.');
+      valid = false;
+    } else setFieldError(password, '');
+
+    if (confirm.value !== password.value || confirm.value === '') {
+      setFieldError(confirm, 'Las contraseñas no coinciden.');
+      valid = false;
+    } else setFieldError(confirm, '');
+
+    const termsField = terms.closest('.terms-row');
+    if (!terms.checked) {
+      termsField.style.color = '#e6584f';
+      valid = false;
+    } else {
+      termsField.style.color = '';
+    }
+
+    return valid;
+  }
+
+  const form = document.getElementById('register-form');
+  const banner = document.getElementById('register-banner');
+  const submitBtn = document.getElementById('register-submit');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    banner.classList.remove('is-visible', 'is-error', 'is-success');
+    if (!validate()) {
+      showToast('Revisa los campos marcados en el formulario.', 'error');
+      return;
+    }
+
+    submitBtn.setAttribute('data-loading', 'true');
+    submitBtn.disabled = true;
+
+    setTimeout(() => {
+      const result = ColabAuth.register({
+        name: document.getElementById('reg-name').value.trim(),
+        email: document.getElementById('reg-email').value.trim(),
+        password: document.getElementById('reg-password').value,
+      });
+
+      submitBtn.removeAttribute('data-loading');
+      submitBtn.disabled = false;
+
+      if (!result.ok) {
+        banner.textContent = result.error;
+        banner.classList.add('is-visible', 'is-error');
+        return;
+      }
+
+      ColabAuth.login({
+        email: document.getElementById('reg-email').value.trim(),
+        password: document.getElementById('reg-password').value,
+        remember: true,
+      });
+
+      banner.textContent = '¡Cuenta creada! Redirigiendo a tu dashboard...';
+      banner.classList.add('is-visible', 'is-success');
+      setTimeout(() => { window.location.href = 'dashboard.html'; }, 700);
+    }, 800);
+  });
+
+  ['reg-name', 'reg-email', 'reg-password-confirm'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      const field = document.getElementById(id).closest('.field');
+      if (field.classList.contains('is-invalid')) validate();
+    });
+  });
+
+  document.getElementById('google-auth').addEventListener('click', () => {
+    showToast('El registro con Google estará disponible próximamente.', 'error');
+  });
+  document.getElementById('linkedin-auth').addEventListener('click', () => {
+    showToast('El registro con LinkedIn estará disponible próximamente.', 'error');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi perfil — ColabUp</title>
+<meta name="theme-color" content="#1E3A5F">
+<link rel="icon" href="assets/images/logo.png" type="image/png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+<div class="app-shell">
+  <aside class="app-sidebar" id="sidebar">
+    <a href="index.html" class="brand"><img src="assets/images/logo.png" alt="ColabUp"></a>
+    <nav class="app-nav">
+      <a href="dashboard.html"><i class="fa-solid fa-grip"></i> Dashboard</a>
+      <a href="profile.html" class="is-active"><i class="fa-solid fa-user"></i> Mi perfil</a>
+      <a href="projects.html"><i class="fa-solid fa-diagram-project"></i> Proyectos</a>
+      <a href="groups.html"><i class="fa-solid fa-users-rectangle"></i> Grupos</a>
+      <a href="messages.html"><i class="fa-solid fa-message"></i> Mensajes</a>
+      <a href="notifications.html"><i class="fa-solid fa-bell"></i> Notificaciones</a>
+      <a href="settings.html"><i class="fa-solid fa-gear"></i> Configuración</a>
+      <a href="help.html"><i class="fa-solid fa-circle-question"></i> Ayuda</a>
+    </nav>
+    <div class="app-sidebar-footer">
+      <button id="logout-btn" style="width:100%; background:none; border:none; cursor:pointer; padding:0;">
+        <span style="display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; font-size:14px; font-weight:600; font-family: var(--font-display); color: rgba(255,255,255,0.7);">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
+        </span>
+      </button>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="app-topbar">
+      <button class="icon-btn nav-toggle-mobile" id="sidebar-toggle" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-search">
+        <i class="fa-solid fa-magnifying-glass" style="color:#8b93a1;"></i>
+        <input type="search" placeholder="Buscar proyectos, personas, grupos...">
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" aria-label="Notificaciones"><i class="fa-solid fa-bell"></i><span class="dot"></span></button>
+        <button class="icon-btn" aria-label="Mensajes"><i class="fa-solid fa-message"></i></button>
+        <div class="user-chip">
+          <span class="avatar" id="user-avatar-topbar">U</span>
+          <span id="user-name-topbar">Usuario</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-content">
+
+      <!-- Banner + head -->
+      <section class="profile-banner">
+        <button class="btn btn-ghost-light banner-edit-btn" id="banner-edit-btn"><i class="fa-solid fa-camera"></i> Editar portada</button>
+      </section>
+
+      <div class="profile-head">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profile-avatar">U</div>
+          <button class="avatar-edit-btn" id="avatar-edit-btn" aria-label="Cambiar foto de perfil"><i class="fa-solid fa-camera"></i></button>
+        </div>
+        <div class="profile-head-info">
+          <h1 id="profile-name">Usuario ColabUp</h1>
+          <div class="profile-role" id="profile-role">Estudiante</div>
+          <div class="profile-meta">
+            <span><i class="fa-solid fa-location-dot"></i> <span id="profile-location">—</span></span>
+            <span><i class="fa-solid fa-graduation-cap"></i> <span id="profile-university">—</span></span>
+          </div>
+        </div>
+        <div class="profile-head-actions">
+          <button class="btn btn-secondary" id="edit-profile-btn" data-view-only><i class="fa-solid fa-pen"></i> Editar perfil</button>
+          <button class="btn btn-primary" id="save-profile-btn" data-edit-only><i class="fa-solid fa-check"></i> Guardar cambios</button>
+        </div>
+      </div>
+
+      <div class="profile-grid">
+        <!-- Main column -->
+        <div>
+          <!-- About -->
+          <section class="panel" style="margin-bottom: var(--space-3);">
+            <div class="profile-section-title"><h2>Sobre mí</h2></div>
+            <p class="about-text" id="about-text" data-view-only></p>
+            <div class="about-edit field" data-edit-only>
+              <textarea id="about-textarea" placeholder="Cuéntale a la comunidad sobre ti"></textarea>
+            </div>
+          </section>
+
+          <!-- Experience -->
+          <section class="panel" style="margin-bottom: var(--space-3);">
+            <div class="profile-section-title">
+              <h2>Experiencia</h2>
+              <button type="button" class="add-link-btn" id="add-experience-trigger" data-edit-only><i class="fa-solid fa-plus"></i> Agregar</button>
+            </div>
+            <div id="experience-list"></div>
+          </section>
+
+          <!-- Education -->
+          <section class="panel" style="margin-bottom: var(--space-3);">
+            <div class="profile-section-title">
+              <h2>Educación</h2>
+              <button type="button" class="add-link-btn" id="add-education-trigger" data-edit-only><i class="fa-solid fa-plus"></i> Agregar</button>
+            </div>
+            <div id="education-list"></div>
+          </section>
+
+          <!-- Portfolio -->
+          <section class="panel">
+            <div class="profile-section-title"><h2>Portafolio</h2></div>
+            <div class="portfolio-grid" id="portfolio-grid"></div>
+          </section>
+        </div>
+
+        <!-- Side column -->
+        <div>
+          <!-- Skills -->
+          <section class="panel" style="margin-bottom: var(--space-3);">
+            <div class="profile-section-title"><h2>Skills</h2></div>
+            <div class="skill-tags" id="skills-wrap"></div>
+            <div class="skill-add-row" data-edit-only>
+              <input type="text" id="skill-input" placeholder="Agregar habilidad (ej. Python)">
+              <button class="btn btn-secondary" id="add-skill-btn" type="button">Agregar</button>
+            </div>
+          </section>
+
+          <!-- Certifications -->
+          <section class="panel">
+            <div class="profile-section-title">
+              <h2>Certificaciones</h2>
+              <button type="button" class="add-link-btn" id="add-cert-trigger" data-edit-only><i class="fa-solid fa-plus"></i> Agregar</button>
+            </div>
+            <div class="cert-list" id="cert-list"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal-backdrop" id="modal-backdrop"></div>
+
+<div class="modal-box" id="modal-experience" role="dialog" aria-modal="true">
+  <button class="modal-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+  <h2>Agregar experiencia</h2>
+  <form id="form-experience" novalidate>
+    <div class="field"><label for="exp-title">Cargo</label><input type="text" id="exp-title" placeholder="Ej. Frontend Developer" required></div>
+    <div class="field"><label for="exp-org">Empresa / organización</label><input type="text" id="exp-org" placeholder="Ej. NextGen Labs" required></div>
+    <div class="field"><label for="exp-dates">Periodo</label><input type="text" id="exp-dates" placeholder="Ej. 2025 — Actualidad" required></div>
+    <div class="field"><label for="exp-desc">Descripción (opcional)</label><textarea id="exp-desc" placeholder="¿Qué hiciste en este rol?"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Guardar experiencia</button>
+  </form>
+</div>
+
+<div class="modal-box" id="modal-education" role="dialog" aria-modal="true">
+  <button class="modal-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+  <h2>Agregar educación</h2>
+  <form id="form-education" novalidate>
+    <div class="field"><label for="edu-title">Programa / carrera</label><input type="text" id="edu-title" placeholder="Ej. Ingeniería de Software" required></div>
+    <div class="field"><label for="edu-org">Institución</label><input type="text" id="edu-org" placeholder="Ej. UPC" required></div>
+    <div class="field"><label for="edu-dates">Periodo</label><input type="text" id="edu-dates" placeholder="Ej. 2023 — 2028" required></div>
+    <div class="field"><label for="edu-desc">Descripción (opcional)</label><textarea id="edu-desc" placeholder="Detalles adicionales"></textarea></div>
+    <button type="submit" class="btn btn-primary btn-block">Guardar educación</button>
+  </form>
+</div>
+
+<div class="modal-box" id="modal-cert" role="dialog" aria-modal="true">
+  <button class="modal-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+  <h2>Agregar certificación</h2>
+  <form id="form-cert" novalidate>
+    <div class="field"><label for="cert-name">Nombre de la certificación</label><input type="text" id="cert-name" placeholder="Ej. Scrum Foundation Professional" required></div>
+    <div class="field"><label for="cert-issuer">Emitido por</label><input type="text" id="cert-issuer" placeholder="Ej. CertiProf" required></div>
+    <div class="field"><label for="cert-year">Año</label><input type="text" id="cert-year" placeholder="Ej. 2026" required></div>
+    <button type="submit" class="btn btn-primary btn-block">Guardar certificación</button>
+  </form>
+</div>
+
+<div class="modal-box" id="modal-portfolio" role="dialog" aria-modal="true">
+  <button class="modal-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+  <h2>Agregar proyecto al portafolio</h2>
+  <form id="form-portfolio" novalidate>
+    <div class="field"><label for="pf-title">Título del proyecto</label><input type="text" id="pf-title" placeholder="Ej. App de reciclaje inteligente" required></div>
+    <div class="field"><label for="pf-tag">Etiqueta (opcional)</label><input type="text" id="pf-tag" placeholder="Ej. Proyecto en curso"></div>
+    <div class="field"><label for="pf-img">URL de imagen (opcional)</label><input type="url" id="pf-img" placeholder="https://..."></div>
+    <button type="submit" class="btn btn-primary btn-block">Agregar al portafolio</button>
+  </form>
+</div>
+
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="js/auth.js"></script>
+<script>
+  ColabAuth.requireAuth('login.html');
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    ColabAuth.logout();
+    window.location.href = 'index.html';
+  });
+</script>
+<script src="js/dashboard.js"></script>
+<script src="js/profile.js"></script>
+<script src="js/chatbot.js"></script>
+</body>
+</html>

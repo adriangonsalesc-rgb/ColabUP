@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard.html
+Disallow: /profile.html
+Disallow: /projects.html
+Disallow: /groups.html
+Disallow: /messages.html
+Disallow: /notifications.html
+Disallow: /settings.html
+Disallow: /help.html
+
+Sitemap: https://www.colabup.app/sitemap.xml
